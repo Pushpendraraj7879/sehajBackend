@@ -1,10 +1,12 @@
 const express=require("express")
 const app=express()
 require("dotenv").config()
+const cors=require("cors")
 const mongoose=require("mongoose")
 const Contact =require("./models/contactModel")
 const MONGO_URL=process.env.MONGO_URL
 const PORT=process.env.PORT || 3000
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 mongoose.connect(process.env.MONGO_URL).then(
